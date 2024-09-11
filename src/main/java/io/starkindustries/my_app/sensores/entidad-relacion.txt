@@ -1,0 +1,51 @@
+Entidades:
+
+    Sede:
+        Representa la sede de Stark Industries en Nueva York.
+        Puede tener atributos como: ubicación, nombre, identificador, superficie, etc.
+
+    Sistema de Seguridad:
+        El sistema que gestiona la seguridad de la sede.
+        Atributos: nombre, versión, fecha de instalación, estado, etc.
+
+    Sensor:
+        Representa un dispositivo que detecta algún tipo de evento o condición (movimiento, temperatura, acceso).
+        Tipos de sensores: sensor de movimiento, sensor de temperatura, sensor de acceso.
+        Atributos: id_sensor, tipo, ubicación, estado, sensibilidad, etc.
+
+    Evento:
+        Representa un incidente o condición detectada por un sensor.
+        Atributos: id_evento, tipo_evento, fecha_hora, gravedad, sensor_asociado, respuesta, etc.
+
+    Usuario/Supervisor:
+        Personas que administran o monitorean el sistema de seguridad.
+        Atributos: id_usuario, nombre, rol, credenciales, nivel_de_acceso, etc.
+
+    Respuesta:
+        Acción que el sistema o los operadores toman en respuesta a un evento detectado.
+        Atributos: id_respuesta, tipo_respuesta, tiempo_respuesta, acciones_tomadas, etc.
+
+    Notificación:
+        Mensajes enviados a los usuarios o sistemas de monitoreo cuando ocurre un evento.
+        Atributos: id_notificación, mensaje, fecha_hora_envío, destinatario, tipo_notificación, etc.
+
+Relaciones:
+
+    La sede "tiene" un sistema de seguridad:
+        Relación 1 a 1 entre la sede y el sistema de seguridad.
+
+    El sistema de seguridad "gestiona" múltiples sensores:
+        Relación 1 a muchos entre el sistema de seguridad y los sensores.
+
+    Los sensores "detectan" eventos:
+        Relación 1 a muchos entre sensores y eventos.
+
+    El sistema de seguridad o el usuario "responde" a un evento:
+        Relación muchos a 1 entre el evento y la respuesta.
+
+    El sistema de seguridad "envía" notificaciones a los usuarios/supervisores:
+        Relación 1 a muchos entre el sistema de seguridad y las notificaciones.
+        Relación muchos a muchos entre notificaciones y usuarios (un usuario puede recibir muchas notificaciones y una notificación puede ser recibida por varios usuarios).
+
+    El usuario/supervisor "monitorea" el sistema de seguridad:
+        Relación 1 a muchos entre el usuario y el sistema de seguridad.
