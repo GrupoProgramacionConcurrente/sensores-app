@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{usuarioSupervisor.add.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{usuarioSupervisor.add.headline}]]</h1>
+                <div>
+                    <a th:href="@{/usuarioSupervisors}" class="btn btn-secondary">[[#{usuarioSupervisor.add.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('usuarioSupervisor')}" />
+            <form th:action="${requestUri}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='usuarioSupervisor', field='nombre')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='usuarioSupervisor', field='credenciales')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='usuarioSupervisor', field='rol')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='usuarioSupervisor', field='nivelAcceso')}" />
+                <input type="submit" th:value="#{usuarioSupervisor.add.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

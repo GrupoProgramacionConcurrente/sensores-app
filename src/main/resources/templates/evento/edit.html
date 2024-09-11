@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{evento.edit.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{evento.edit.headline}]]</h1>
+                <div>
+                    <a th:href="@{/eventos}" class="btn btn-secondary">[[#{evento.edit.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('evento')}" />
+            <form th:action="${requestUri}" method="post">
+                <input type="submit" th:value="#{evento.edit.headline}" class="btn btn-primary mt-4 mb-4" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='tipo')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='fecha', inputClass='js-datepicker')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='gravedad')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='sensorasociado')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='respuesta')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='rel5', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='rel6', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='rel7', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='rel8', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='evento', field='rel11', type='select')}" />
+                <input type="submit" th:value="#{evento.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

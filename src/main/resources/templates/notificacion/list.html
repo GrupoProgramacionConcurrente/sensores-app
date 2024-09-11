@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{notificacion.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{notificacion.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/notificacions/add}" class="btn btn-primary ms-2">[[#{notificacion.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${notificacions.empty}">[[#{notificacion.list.empty}]]</div>
+            <div th:if="${!notificacions.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{notificacion.id.label}]]</th>
+                            <th scope="col">[[#{notificacion.mensaje.label}]]</th>
+                            <th scope="col">[[#{notificacion.fechaHoraEnvio.label}]]</th>
+                            <th scope="col">[[#{notificacion.destinatario.label}]]</th>
+                            <th scope="col">[[#{notificacion.tipoNotificacion.label}]]</th>
+                            <th scope="col">[[#{notificacion.rel9.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="notificacion : ${notificacions}">
+                            <td>[[${notificacion.id}]]</td>
+                            <td>[[${notificacion.mensaje}]]</td>
+                            <td>[[${notificacion.fechaHoraEnvio}]]</td>
+                            <td>[[${notificacion.destinatario}]]</td>
+                            <td>[[${notificacion.tipoNotificacion}]]</td>
+                            <td>[[${notificacion.rel9}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/notificacions/edit/{id}(id=${notificacion.id})}" class="btn btn-sm btn-secondary">[[#{notificacion.list.edit}]]</a>
+                                    <form th:action="@{/notificacions/delete/{id}(id=${notificacion.id})}"
+                                            th:hx-confirm="#{delete.confirm}" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{notificacion.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

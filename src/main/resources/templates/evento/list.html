@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{evento.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{evento.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/eventos/add}" class="btn btn-primary ms-2">[[#{evento.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${eventoes.empty}">[[#{evento.list.empty}]]</div>
+            <div th:if="${!eventoes.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{evento.id.label}]]</th>
+                            <th scope="col">[[#{evento.tipo.label}]]</th>
+                            <th scope="col">[[#{evento.fecha.label}]]</th>
+                            <th scope="col">[[#{evento.gravedad.label}]]</th>
+                            <th scope="col">[[#{evento.sensorasociado.label}]]</th>
+                            <th scope="col">[[#{evento.respuesta.label}]]</th>
+                            <th scope="col">[[#{evento.rel5.label}]]</th>
+                            <th scope="col">[[#{evento.rel6.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="evento : ${eventoes}">
+                            <td>[[${evento.id}]]</td>
+                            <td>[[${evento.tipo}]]</td>
+                            <td>[[${evento.fecha}]]</td>
+                            <td>[[${evento.gravedad}]]</td>
+                            <td>[[${evento.sensorasociado}]]</td>
+                            <td>[[${evento.respuesta}]]</td>
+                            <td>[[${evento.rel5}]]</td>
+                            <td>[[${evento.rel6}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/eventos/edit/{id}(id=${evento.id})}" class="btn btn-sm btn-secondary">[[#{evento.list.edit}]]</a>
+                                    <form th:action="@{/eventos/delete/{id}(id=${evento.id})}"
+                                            th:hx-confirm="#{delete.confirm}" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{evento.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

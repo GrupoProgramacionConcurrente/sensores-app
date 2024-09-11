@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{sistemaSeguridad.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{sistemaSeguridad.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/sistemaSeguridads/add}" class="btn btn-primary ms-2">[[#{sistemaSeguridad.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${sistemaSeguridads.empty}">[[#{sistemaSeguridad.list.empty}]]</div>
+            <div th:if="${!sistemaSeguridads.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{sistemaSeguridad.id.label}]]</th>
+                            <th scope="col">[[#{sistemaSeguridad.nombre.label}]]</th>
+                            <th scope="col">[[#{sistemaSeguridad.version.label}]]</th>
+                            <th scope="col">[[#{sistemaSeguridad.fechainstalacion.label}]]</th>
+                            <th scope="col">[[#{sistemaSeguridad.estado.label}]]</th>
+                            <th scope="col">[[#{sistemaSeguridad.rel2.label}]]</th>
+                            <th scope="col">[[#{sistemaSeguridad.rel3.label}]]</th>
+                            <th scope="col">[[#{sistemaSeguridad.rel4.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="sistemaSeguridad : ${sistemaSeguridads}">
+                            <td>[[${sistemaSeguridad.id}]]</td>
+                            <td>[[${sistemaSeguridad.nombre}]]</td>
+                            <td>[[${sistemaSeguridad.version}]]</td>
+                            <td>[[${sistemaSeguridad.fechainstalacion}]]</td>
+                            <td>[[${sistemaSeguridad.estado}]]</td>
+                            <td>[[${sistemaSeguridad.rel2}]]</td>
+                            <td>[[${sistemaSeguridad.rel3}]]</td>
+                            <td>[[${sistemaSeguridad.rel4}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/sistemaSeguridads/edit/{id}(id=${sistemaSeguridad.id})}" class="btn btn-sm btn-secondary">[[#{sistemaSeguridad.list.edit}]]</a>
+                                    <form th:action="@{/sistemaSeguridads/delete/{id}(id=${sistemaSeguridad.id})}"
+                                            th:hx-confirm="#{delete.confirm}" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{sistemaSeguridad.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

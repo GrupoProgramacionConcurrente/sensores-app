@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{home.index.headline}]]</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <h1 class="mb-4">[[#{home.index.headline}]]</h1>
+            <p>[(#{home.index.text})]</p>
+            <p class="mb-5">
+                <span>[[#{home.index.swagger}]]</span>
+                <a th:href="@{/swagger-ui.html}" target="_blank">[[#{home.index.swagger.link}]]</a>.
+            </p>
+            <div class="col-md-4 mb-5">
+                <h4 class="mb-3">[[#{home.index.exploreEntities}]]</h4>
+                <div class="list-group">
+                    <a th:href="@{/sedes}" class="list-group-item list-group-item-action">[[#{sede.list.headline}]]</a>
+                    <a th:href="@{/sistemaSeguridads}" class="list-group-item list-group-item-action">[[#{sistemaSeguridad.list.headline}]]</a>
+                    <a th:href="@{/sensorMovimientos}" class="list-group-item list-group-item-action">[[#{sensorMovimiento.list.headline}]]</a>
+                    <a th:href="@{/sensorAccesos}" class="list-group-item list-group-item-action">[[#{sensorAcceso.list.headline}]]</a>
+                    <a th:href="@{/sensorTemperaturas}" class="list-group-item list-group-item-action">[[#{sensorTemperatura.list.headline}]]</a>
+                    <a th:href="@{/eventos}" class="list-group-item list-group-item-action">[[#{evento.list.headline}]]</a>
+                    <a th:href="@{/notificacions}" class="list-group-item list-group-item-action">[[#{notificacion.list.headline}]]</a>
+                    <a th:href="@{/usuarioSupervisors}" class="list-group-item list-group-item-action">[[#{usuarioSupervisor.list.headline}]]</a>
+                    <a th:href="@{/respuestas}" class="list-group-item list-group-item-action">[[#{respuesta.list.headline}]]</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{sensorTemperatura.edit.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{sensorTemperatura.edit.headline}]]</h1>
+                <div>
+                    <a th:href="@{/sensorTemperaturas}" class="btn btn-secondary">[[#{sensorTemperatura.edit.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('sensorTemperatura')}" />
+            <form th:action="${requestUri}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='sensorTemperatura', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='sensorTemperatura', field='nombre')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='sensorTemperatura', field='estado')}" />
+                <input type="submit" th:value="#{sensorTemperatura.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

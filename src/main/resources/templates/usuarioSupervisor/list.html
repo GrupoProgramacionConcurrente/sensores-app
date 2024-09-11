@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{usuarioSupervisor.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{usuarioSupervisor.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/usuarioSupervisors/add}" class="btn btn-primary ms-2">[[#{usuarioSupervisor.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${usuarioSupervisors.empty}">[[#{usuarioSupervisor.list.empty}]]</div>
+            <div th:if="${!usuarioSupervisors.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{usuarioSupervisor.id.label}]]</th>
+                            <th scope="col">[[#{usuarioSupervisor.nombre.label}]]</th>
+                            <th scope="col">[[#{usuarioSupervisor.credenciales.label}]]</th>
+                            <th scope="col">[[#{usuarioSupervisor.rol.label}]]</th>
+                            <th scope="col">[[#{usuarioSupervisor.nivelAcceso.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="usuarioSupervisor : ${usuarioSupervisors}">
+                            <td>[[${usuarioSupervisor.id}]]</td>
+                            <td>[[${usuarioSupervisor.nombre}]]</td>
+                            <td>[[${usuarioSupervisor.credenciales}]]</td>
+                            <td>[[${usuarioSupervisor.rol}]]</td>
+                            <td>[[${usuarioSupervisor.nivelAcceso}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/usuarioSupervisors/edit/{id}(id=${usuarioSupervisor.id})}" class="btn btn-sm btn-secondary">[[#{usuarioSupervisor.list.edit}]]</a>
+                                    <form th:action="@{/usuarioSupervisors/delete/{id}(id=${usuarioSupervisor.id})}"
+                                            th:hx-confirm="#{delete.confirm}" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{usuarioSupervisor.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

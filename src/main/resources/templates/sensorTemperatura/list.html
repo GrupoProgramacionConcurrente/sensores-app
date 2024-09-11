@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{sensorTemperatura.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{sensorTemperatura.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/sensorTemperaturas/add}" class="btn btn-primary ms-2">[[#{sensorTemperatura.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${sensorTemperaturas.empty}">[[#{sensorTemperatura.list.empty}]]</div>
+            <div th:if="${!sensorTemperaturas.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{sensorTemperatura.id.label}]]</th>
+                            <th scope="col">[[#{sensorTemperatura.nombre.label}]]</th>
+                            <th scope="col">[[#{sensorTemperatura.estado.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="sensorTemperatura : ${sensorTemperaturas}">
+                            <td>[[${sensorTemperatura.id}]]</td>
+                            <td>[[${sensorTemperatura.nombre}]]</td>
+                            <td>[[${sensorTemperatura.estado}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/sensorTemperaturas/edit/{id}(id=${sensorTemperatura.id})}" class="btn btn-sm btn-secondary">[[#{sensorTemperatura.list.edit}]]</a>
+                                    <form th:action="@{/sensorTemperaturas/delete/{id}(id=${sensorTemperatura.id})}"
+                                            th:hx-confirm="#{delete.confirm}" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{sensorTemperatura.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

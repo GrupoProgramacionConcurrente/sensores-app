@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{notificacion.edit.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{notificacion.edit.headline}]]</h1>
+                <div>
+                    <a th:href="@{/notificacions}" class="btn btn-secondary">[[#{notificacion.edit.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('notificacion')}" />
+            <form th:action="${requestUri}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='notificacion', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='notificacion', field='mensaje')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='notificacion', field='fechaHoraEnvio', inputClass='js-datetimepicker')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='notificacion', field='destinatario')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='notificacion', field='tipoNotificacion')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='notificacion', field='rel9', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='notificacion', field='rel10', type='multiselect')}" />
+                <input type="submit" th:value="#{notificacion.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>
