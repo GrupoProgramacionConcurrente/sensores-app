@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 @Controller
 @RequestMapping("/usuarioSupervisors")
 public class UsuarioSupervisorController {
@@ -58,8 +57,8 @@ public class UsuarioSupervisorController {
 
     @PostMapping("/edit/{id}")
     public String edit(@PathVariable(name = "id") final Long id,
-            @ModelAttribute("usuarioSupervisor") @Valid final UsuarioSupervisorDTO usuarioSupervisorDTO,
-            final BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+                       @ModelAttribute("usuarioSupervisor") @Valid final UsuarioSupervisorDTO usuarioSupervisorDTO,
+                       final BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "usuarioSupervisor/edit";
         }
@@ -70,7 +69,7 @@ public class UsuarioSupervisorController {
 
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable(name = "id") final Long id,
-            final RedirectAttributes redirectAttributes) {
+                         final RedirectAttributes redirectAttributes) {
         final ReferencedWarning referencedWarning = usuarioSupervisorService.getReferencedWarning(id);
         if (referencedWarning != null) {
             redirectAttributes.addFlashAttribute(WebUtils.MSG_ERROR,

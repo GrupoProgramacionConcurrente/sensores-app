@@ -1,29 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="~{layout}">
-    <head>
-        <title>[[#{sistemaSeguridad.add.headline}]]</title>
-    </head>
-    <body>
-        <div layout:fragment="content">
-            <div class="d-flex flex-wrap mb-4">
-                <h1 class="flex-grow-1">[[#{sistemaSeguridad.add.headline}]]</h1>
-                <div>
-                    <a th:href="@{/sistemaSeguridads}" class="btn btn-secondary">[[#{sistemaSeguridad.add.back}]]</a>
-                </div>
-            </div>
-            <div th:replace="~{fragments/forms::globalErrors('sistemaSeguridad')}" />
-            <form th:action="${requestUri}" method="post">
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='nombre')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='version')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='fechainstalacion', inputClass='js-datepicker')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='estado')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel2', type='select')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel3', type='select')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel4', type='select')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel12', type='select')}" />
-                <input type="submit" th:value="#{sistemaSeguridad.add.headline}" class="btn btn-primary mt-4" />
-            </form>
+      layout:decorate="~{layout}">
+<head>
+    <title>[[#{sistemaSeguridad.add.headline}]]</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="d-flex flex-wrap mb-4">
+        <h1 class="flex-grow-1">[[#{sistemaSeguridad.add.headline}]]</h1>
+        <div>
+            <a th:href="@{/sistemaSeguridads}" class="btn btn-secondary">[[#{sistemaSeguridad.add.back}]]</a>
         </div>
-    </body>
+    </div>
+    <div th:replace="~{fragments/forms::globalErrors('sistemaSeguridad')}" />
+    <form th:action="@{/sistemaSeguridads/add}" method="post">
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='nombre')}" />
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='version')}" />
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='fechainstalacion', inputClass='js-datepicker')}" />
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='estado')}" />
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel2', type='select')}" />
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel3', type='select')}" />
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel4', type='select')}" />
+        <div th:replace="~{fragments/forms::inputRow(object='sistemaSeguridad', field='rel12', type='select')}" />
+        <input type="submit" th:value="#{sistemaSeguridad.add.headline}" class="btn btn-primary mt-4" />
+    </form>
+</div>
+</body>
 </html>
