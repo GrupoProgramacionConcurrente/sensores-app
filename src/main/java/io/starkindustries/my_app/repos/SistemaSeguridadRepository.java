@@ -6,8 +6,9 @@ import io.starkindustries.my_app.domain.SensorTemperatura;
 import io.starkindustries.my_app.domain.SistemaSeguridad;
 import io.starkindustries.my_app.domain.UsuarioSupervisor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public interface SistemaSeguridadRepository extends JpaRepository<SistemaSeguridad, Long> {
 
     SistemaSeguridad findFirstByRel2(SensorMovimiento sensorMovimiento);
