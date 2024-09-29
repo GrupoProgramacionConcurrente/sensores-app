@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   datasource:
     url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/my-app?serverTimezone=UTC}
@@ -39,3 +41,5 @@ error:
       SistemaSeguridadRel4Unique: SISTEMA_SEGURIDAD_REL4UNIQUE
 springdoc:
   pathsToMatch: /api/**
+
+

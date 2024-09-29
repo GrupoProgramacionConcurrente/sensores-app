@@ -1,29 +1,24 @@
 package io.starkindustries.my_app.sensores;
 
-public class SensorAcceso extends Sensor {
-    private String accesoPermitido;
+import org.springframework.stereotype.Component;
+import java.util.Random;
 
-    public SensorAcceso(String idSensor, String ubicacion, boolean estado, int sensibilidad, String accesoPermitido) {
-        super(idSensor, TipoSensor.Tipo.ACCESO, ubicacion, estado, sensibilidad);
-        this.accesoPermitido = accesoPermitido;
+@Component
+public class SensorAcceso {
+    private Random random = new Random();
+
+    public String detect() {
+        int value = random.nextInt(500);
+        if (value >= 400 && value < 450) {
+            return "Acceso no autorizado detectado: Peligro Ligero";
+        } else if (value >= 450 && value < 480) {
+            return "Acceso no autorizado detectado: Peligro Medio";
+        } else if (value >= 480) {
+            return "Acceso no autorizado detectado: Peligro Grave";
+        } else {
+            return "Acceso no autorizado detectado: Sin Peligro";
+        }
     }
 
-    @Override
-    public void activar() {
-        System.out.println("Sensor de acceso activado.");
-    }
-
-    @Override
-    public void desactivar() {
-        System.out.println("Sensor de acceso desactivado.");
-    }
-
-    public String getAccesoPermitido() {
-        return accesoPermitido;
-    }
-
-    public void setAccesoPermitido(String accesoPermitido) {
-        this.accesoPermitido = accesoPermitido;
-    }
 }
 

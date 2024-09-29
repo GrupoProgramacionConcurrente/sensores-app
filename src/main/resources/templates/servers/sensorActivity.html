@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Actividad del Sensor</title>
+  <script>
+    async function obtenerActividadSensor() {
+      try {
+        console.log('Obteniendo actividad del sensor...');
+        const response = await fetch('/sensors/detectar-movimiento');
+        if (response.ok) {
+          const result = await response.text();
+          console.log('Actividad del sensor obtenida:', result);
+          document.getElementById('actividad-sensor').innerText = result;
+        } else {
+          console.error('Error al obtener la actividad del sensor');
+        }
+      } catch (error) {
+        console.error('Error al obtener la actividad del sensor:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      obtenerActividadSensor();
+    });
+  </script>
+</head>
+<body>
+<h1>Actividad del Sensor</h1>
+<div id="actividad-sensor"></div>
+</body>
+</html>

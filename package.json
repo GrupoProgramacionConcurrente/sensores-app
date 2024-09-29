@@ -8,8 +8,9 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "htmx.org": "^2.0.2",
-    "flatpickr": "^4.6.13"
+    "docker": "^1.0.0",
+    "flatpickr": "^4.6.13",
+    "htmx.org": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

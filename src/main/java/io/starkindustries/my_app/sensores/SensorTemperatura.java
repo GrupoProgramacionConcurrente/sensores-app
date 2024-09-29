@@ -1,28 +1,23 @@
 package io.starkindustries.my_app.sensores;
 
-public class SensorTemperatura extends Sensor {
-    private int temperaturaActual;
+import org.springframework.stereotype.Component;
+import java.util.Random;
 
-    public SensorTemperatura(String idSensor, String ubicacion, boolean estado, int sensibilidad, int temperaturaActual) {
-        super(idSensor, TipoSensor.Tipo.TEMPERATURA, ubicacion, estado, sensibilidad);
-        this.temperaturaActual = temperaturaActual;
+@Component
+public class SensorTemperatura  {
+    private Random random = new Random();
+
+    public String detect() {
+        int value = random.nextInt(500);
+        if (value >= 400 && value < 450) {
+            return "Temperatura elevada detectada: Peligro Ligero";
+        } else if (value >= 450 && value < 480) {
+            return "Temperatura elevada detectada: Peligro Medio";
+        } else if (value >= 480) {
+            return "Temperatura elevada detectada: Peligro Grave";
+        } else {
+            return "Temperatura elevada detectada: Sin Peligro";
+        }
     }
 
-    @Override
-    public void activar() {
-        System.out.println("Sensor de temperatura activado.");
-    }
-
-    @Override
-    public void desactivar() {
-        System.out.println("Sensor de temperatura desactivado.");
-    }
-
-    public int getTemperaturaActual() {
-        return temperaturaActual;
-    }
-
-    public void setTemperaturaActual(int temperaturaActual) {
-        this.temperaturaActual = temperaturaActual;
-    }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Seleccionar Sensor</title>
+  <script>
+    function redirectToSensorActivity(sensorType) {
+      window.location.href = `sensorActivity.html?sensor=${sensorType}`;
+    }
+
+    function connectToTemperature() {
+      redirectToSensorActivity('temperatura');
+    }
+
+    function connectToMovement() {
+      redirectToSensorActivity('movimiento');
+    }
+
+    function connectToAccess() {
+      redirectToSensorActivity('acceso');
+    }
+  </script>
+</head>
+<body>
+<h1>Seleccione un sensor</h1>
+<button onclick="connectToTemperature()">Sensor de Temperatura</button>
+<button onclick="connectToMovement()">Sensor de Movimiento</button>
+<button onclick="connectToAccess()">Sensor de Acceso</button>
+</body>
+</html>
